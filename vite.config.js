@@ -30,5 +30,8 @@ export default {
       }
     }
   },
-  plugins: [vue(), svgLoader()],
+  plugins: [
+    vue(),
+    svgLoader()
+  ],
 }

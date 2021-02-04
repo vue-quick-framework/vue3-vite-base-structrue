@@ -1,10 +1,10 @@
 <template>
-  <img alt="Vue logo" src="assets/images/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <router-view/>
+<!--  <HelloWorld msg="Hello Vue 3 + Vite" />-->
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <style lang="scss">
@@ -15,9 +15,5 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   //color: #2c3e50;
   margin-top: 60px;
-  color: red;
-  span {
-    color: blue;
-  }
 }
 </style>
