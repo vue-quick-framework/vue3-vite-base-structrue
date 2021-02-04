@@ -596,6 +596,13 @@ util-deprecate@^1.0.2:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
+vite-svg-loader@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/vite-svg-loader/-/vite-svg-loader-1.4.2.tgz#54e66edbc439a729224617fc00442639502c0d29"
+  integrity sha512-YHgKBITwHAO3NfCiLKutM7EkbiEF4QfcxApmZKCQbHVYTQVIRNUKRSpcwqk3CJQtykZrGc0OL4QfpQRqH/mU7A==
+  dependencies:
+    "@vue/compiler-sfc" "^3.0.5"
+
 vite@^2.0.0-beta.64:
   version "2.0.0-beta.64"
   resolved "https://registry.npmjs.org/vite/-/vite-2.0.0-beta.64.tgz#245cabc72335911d4cb704545f713d47e880d84f"

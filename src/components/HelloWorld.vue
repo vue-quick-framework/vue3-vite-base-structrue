@@ -13,10 +13,12 @@
   </p>
   <el-button>hello</el-button>
   <el-date-picker v-model="state.date"></el-date-picker>
+  <help-icon></help-icon>
 </template>
 
 <script setup>
 import { defineProps, reactive } from 'vue'
+import helpIcon from '@svgs/help.svg'
 
 defineProps({
   msg: String

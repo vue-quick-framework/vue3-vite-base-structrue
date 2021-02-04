@@ -1,5 +1,7 @@
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
+// https://github.com/jpkleemans/vite-svg-loader
+import svgLoader from 'vite-svg-loader'
 
 /**
  * https://vitejs.dev/config/
@@ -7,7 +9,8 @@ import vue from '@vitejs/plugin-vue'
  */
 export default {
   alias: {
-    '@': resolve('src')
+    '@': resolve('src'),
+    '@svgs': resolve('src/assets/svgs')
   },
   // https://vitejs.dev/config/#server-options
   server: {
@@ -27,5 +30,5 @@ export default {
       }
     }
   },
-  plugins: [vue()],
+  plugins: [vue(), svgLoader()],
 }
