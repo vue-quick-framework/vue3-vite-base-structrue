@@ -11,6 +11,8 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+  <el-button>hello</el-button>
+  <el-date-picker v-model="state.date"></el-date-picker>
 </template>
 
 <script setup>
@@ -20,10 +22,10 @@ defineProps({
   msg: String
 })
 
-const state = reactive({ count: 0 })
+const state = reactive({ count: 0, date: '' })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 a {
   color: #42b983;
 }
