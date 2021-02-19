@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import {ref, onMounted, onBeforeUnmount} from 'vue'
+
 export default {
   name: 'ContextMenu',
   setup(props, context) {
@@ -17,9 +18,9 @@ export default {
 
     // 根据点击的坐标点计算位置
     const getPosition = (x, y) => {
-      const position = { left: x, top: y }
-      const { innerWidth, innerHeight } = window
-      const { offsetWidth: elWidth, offsetHeight: elHeight } = contextMenuRef.value
+      const position = {left: x, top: y}
+      const {innerWidth, innerHeight} = window
+      const {offsetWidth: elWidth, offsetHeight: elHeight} = contextMenuRef.value
       if (y + elHeight > innerHeight) {
         position.top -= elHeight
       }
@@ -37,12 +38,12 @@ export default {
 
     const openMenu = (event) => {
       event = event || window.event
-      const { clientX, clientY, pageX, pageY } = event
+      const {clientX, clientY, pageX, pageY} = event
       const x = clientX || pageX
       const y = clientY || pageY
       const position = getPosition(x, y)
-      const { left, top } = position
-      contextMenuStyle.value = { left: `${left}px`, top: `${top}px` }
+      const {left, top} = position
+      contextMenuStyle.value = {left: `${left}px`, top: `${top}px`}
       menuSwitch.value = true
     }
 

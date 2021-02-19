@@ -1,5 +1,6 @@
 import ContextMenu from './ContextMenu.vue'
 import ContextMenuItem from './ContextMenuItem.vue'
+
 export default {
 	install(app) {
 		app.component(ContextMenu.name, ContextMenu)

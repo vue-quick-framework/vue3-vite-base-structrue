@@ -1,5 +1,6 @@
 <template>
-  <div @mouseover="onMouseOver" @mouseleave="onMouseLeave" @click.stop="onClick" class="context-menu-item" :class="{'sub-menu': existsSubMenu}" ref="contextMenuItemRef">
+  <div @mouseover="onMouseOver" @mouseleave="onMouseLeave" @click.stop="onClick" class="context-menu-item"
+       :class="{'sub-menu': existsSubMenu}" ref="contextMenuItemRef">
     <slot></slot>
     <div class="context-sub-menu" v-show="subMenuSwitch" :style="{ left: `${elWidth}px`, top: 0 }">
       <slot name="sub-menu"></slot>
@@ -8,10 +9,11 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
+import {ref, watch} from 'vue'
+
 export default {
   name: 'ContextMenuItem',
-  setup(props, { slots: $slots }) {
+  setup(props, {slots: $slots}) {
     const contextMenuItemRef = ref(null)
     const elWidth = ref(0)
     const subMenuSwitch = ref(false)
@@ -42,7 +44,7 @@ export default {
     onClick() {
       if (!this.existsSubMenu) {
         let parent = this.$parent
-        while(parent) {
+        while (parent) {
           if (parent.$options.name === 'ContextMenu') {
             parent.closeMenu()
             break
@@ -59,10 +61,13 @@ export default {
 .context-menu-item {
   color: #fff;
   background: #4a4a4a;
+
   &:last-child {
     border-bottom: 1px solid #404040;
   }
+
   padding: 2px 15px 2px 5px;
+
   &:hover {
     background: #666;
   }
