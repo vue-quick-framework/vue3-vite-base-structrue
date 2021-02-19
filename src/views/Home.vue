@@ -2,10 +2,8 @@
   <div class="home">
      {{ $store.state.storage.accessToken }}
     <img alt="Vue logo" src="../assets/images/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <component :is="dynHelloWorld"></component>
-
-
+     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <component :is="dynHelloWorld" msg="ABC"></component>
   </div>
 </template>
 
@@ -18,7 +16,8 @@ export default {
   name: 'Home',
   // https://v3.vuejs.org/guide/composition-api-setup.html#setup
   setup(props, context) {
-    const dynHelloWorld = defineAsyncComponent(() => import('@/components/HelloWorld.vue'))
+    const hello = 'HelloWorld'
+    const dynHelloWorld = defineAsyncComponent(() => import(`../components/${hello}.vue`))
 
     onMounted(() => {
       const { proxy } = getCurrentInstance()
@@ -33,8 +32,8 @@ export default {
     console.log('mounted 2')
     this.$store.commit('storage/setAccessToken', 'token')
   },
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    HelloWorld: defineAsyncComponent(() => import('@/components/HelloWorld.vue'))
+  }
 }
 </script>
