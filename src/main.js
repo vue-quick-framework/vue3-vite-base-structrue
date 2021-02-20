@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import api from './api'
 import './assets/stylesheets/application.scss'
+import './utils/events/longpress'
 
 // https://element-plus.gitee.io/#/zh-CN/component/i18n
 import ElementPlus from 'element-plus'

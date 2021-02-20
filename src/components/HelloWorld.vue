@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <div @click="testClick" @longpress="testLongpress">
+    <h1>{{ msg }}</h1>
+  </div>
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
@@ -25,6 +27,10 @@ defineProps({
 })
 
 const state = reactive({ count: 0, date: '' })
+
+const testClick = () => { console.log('testClick') }
+const testLongpress = () => { console.log('testLongpress') }
+
 </script>
 
 <style lang="scss" scoped>
