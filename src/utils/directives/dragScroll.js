@@ -16,6 +16,7 @@ export default {
       const mouseDownScrollTop = scrollContainerEl.scrollTop
 
       const onMouseMove = (event) => {
+        event.preventDefault()
         const { clientX, clientY, pageX, pageY } = event
         const x2 = clientX || pageX
         const y2 = clientY || pageY
