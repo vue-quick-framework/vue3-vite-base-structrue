@@ -13,14 +13,13 @@
 </template>
 
 <script>
-import {onMounted, ref} from 'vue'
-
+import { onMounted, onUpdated, ref } from 'vue'
 export default {
   props: {
-    minWidth: {type: Number, default: 0},
-    minHeight: {type: Number, default: 0},
-    maxWidth: {type: Number, default: 999999},
-    maxHeight: {type: Number, default: 999999},
+    minWidth: { type: Number, default: 0 },
+    minHeight: { type: Number, default: 0 },
+    maxWidth: { type: Number, default: 999999 },
+    maxHeight: { type: Number, default: 999999 },
     directions: {
       type: Array,
       //  左   上    右   下    左上   在下  右上   右下
@@ -30,24 +29,23 @@ export default {
   },
   setup(props, context) {
     const dragSizeContainer = ref(null)
-
-    onMounted(() => {
+    const bindDragListener = () => {
       const rootEl = dragSizeContainer.value
 
       function getOriginSize() {
-        return {width: rootEl.offsetWidth, height: rootEl.offsetHeight}
+        return { width: rootEl.offsetWidth, height: rootEl.offsetHeight }
       }
 
       const resizeEls = Array.prototype.filter.call(rootEl.children, node => node.classList.contains('resize'))
       resizeEls.forEach((resizeEl) => {
         resizeEl.onmousedown = (event) => {
           const mousedownEvent = event || window.event
-          console.log('mousedown')
+          // console.log('mousedown')
           let originSize = getOriginSize()
           let dragType = resizeEl.dataset.type
 
           const mousemove = (event) => {
-            console.log('mousemove')
+            // console.log('mousemove')
             event = event || window.event
 
             if (['r', 'rt', 'rb'].indexOf(dragType) !== -1) {
@@ -56,7 +54,7 @@ export default {
               const max = props.maxWidth
               width < min && (width = min)
               width > max && (width = max)
-              rootEl.style.width = `${width}px`
+              rootEl.style.width = `${ width }px`
             }
             if (['b', 'lb', 'rb'].indexOf(dragType) !== -1) {
               let height = originSize.height + event.clientX - mousedownEvent.clientX
@@ -64,7 +62,7 @@ export default {
               const max = props.maxHeight
               height < min && (height = min)
               height > max && (height = max)
-              rootEl.style.height = `${height}px`
+              rootEl.style.height = `${ height }px`
             }
             if (['l', 'lt', 'lb'].indexOf(dragType) !== -1) {
               let width = originSize.width + mousedownEvent.clientX - event.clientX
@@ -72,7 +70,7 @@ export default {
               const max = props.maxWidth
               width < min && (width = min)
               width > max && (width = max)
-              rootEl.style.width = `${width}px`
+              rootEl.style.width = `${ width }px`
             }
             if (['t', 'lt', 'rt'].indexOf(dragType) !== -1) {
               let height = originSize.height + mousedownEvent.clientY - event.clientY
@@ -80,7 +78,7 @@ export default {
               const max = props.maxHeight
               height < min && (height = min)
               height > max && (height = max)
-              rootEl.style.height = `${height}px`
+              rootEl.style.height = `${ height }px`
             }
           }
           document.addEventListener('mousemove', mousemove)
@@ -92,7 +90,9 @@ export default {
           document.addEventListener('mouseup', mouseup)
         }
       })
-    })
+    }
+    onMounted(() => { bindDragListener() })
+    onUpdated(() => { bindDragListener() })
 
     return {
       dragSizeContainer
