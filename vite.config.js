@@ -9,8 +9,7 @@ import svgLoader from 'vite-svg-loader'
  */
 export default {
   alias: {
-    '@': resolve('src'),
-    '@svgs': resolve('src/assets/svgs')
+    '@': resolve('src')
   },
   // https://vitejs.dev/config/#server-options
   server: {
